@@ -14,6 +14,12 @@ exploration.
 
 ### Building the Container
 
+This step is optional.  Should you decide to build your own image
+instead of pulling from [Docker
+Hub](https://hub.docker.com/r/bunnylushington/example-nitrogen-cowboy)
+change the name of the image below from
+`bunnylusington/example-nitrogen-cowboy` to `nitrogen_cowboy`.
+
 ``` shell
 docker build -t nitrogen_cowboy .
 ```
@@ -26,7 +32,7 @@ filesystem.
 
 ``` shell
 docker run --name nitrogen --rm \
-  -v `pwd`:/site nitrogen_cowboy \
+  -v `pwd`:/site bunnylushington/example-nitrogen-cowboy \
   cp -r /app/site /site
 ```
 
@@ -36,7 +42,7 @@ docker run --name nitrogen --rm \
 docker run --name nitrogen -d --rm \
   -p 127.0.0.1:8000:8000 \
   -v `pwd`/site:/app/site \
-  nitrogen_cowboy
+  bunnylushington/example-nitrogen-cowboy
 ```
 
 ### Connecting to the Console
