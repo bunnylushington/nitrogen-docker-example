@@ -47,7 +47,7 @@ docker run --name nitrogen -d --rm \
 
 ### Connecting to the Console
 
-``` shell
+```
 docker exec -it -e TERM=xterm nitrogen /app/bin/nitrogen remote_console
 ```
 
