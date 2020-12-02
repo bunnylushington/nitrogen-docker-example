@@ -75,9 +75,10 @@ directory; they'll be reflected in the example application.
 > NB: This is an example.  No warranty is provided or implied.
 
 To further this example, let's now deploy to Digital Ocean (DO).
-We'll use [sample.yml](sample.yml) to docker-compose two containers,
-the Nitrogen application and [Traefik](https://traefik.io) which will
-manage certificates, routing, and http -> https redirection.
+We'll use [sample-compose.yml](sample-compose.yml) to docker-compose
+two containers, the Nitrogen application and
+[Traefik](https://traefik.io) which will manage certificates, routing,
+and http -> https redirection.
 
 There are a few preliminary steps to set up the environment which are
 beyond the scope of this example:
@@ -86,23 +87,23 @@ beyond the scope of this example:
 
 2. Create a new droplet, using the Docker image from the DO Marketplace.
 
-3. Setup DNS to point to the droplet (this is required).[^1]
+3. Setup DNS to point to the droplet (this is required).[1]
 
 4. Ensure droplet access via ssh.
 
 > For the purposes of this example, the domain we're using is
-> example.com.  Note that this must be changed in the `sample.yml`
-> file.  We will use `/var/tmp/sample` as our base directory though
-> this is arbitrary.
+> example.com.  Note that this must be changed in the
+> `sample-compose.yml` file.  We will use `/var/tmp/sample` as our
+> base directory though this is arbitrary.
 
 With that out of the way:
 
-5. Copy the `sample.yml` file to
-   `example.com:/var/tmp/sample/sample.yml`.
+5. Copy the `sample-compose.yml` file to
+   `example.com:/var/tmp/sample/sample-compose.yml`.
 
 6. Copy the `site` directory to `example.com:/var/tmp/sample/site`.
 
-7. Execute `docker-compose -f sample.yml up`.
+7. Execute `docker-compose -f sample-compose.yml up`.
 
 At this point the Traefik and Nitrogen images will be pulled from
 hub.docker.com and started; progress will be reflected to stdout.
@@ -111,7 +112,7 @@ Once the front end Nitrogen instance (FE) is running, it will take a
 minute or two for Traefik to generate a certificate request and
 receive a valid certificate from Let's Encrypt.  Note that this will
 fail if DNS is not configured (you need an A or CNAME record) or if
-the sample.yml file was not edited correctly.
+the sample-compose.yml file was not edited correctly.
 
 After a minute or so, you should be able to browse to
 `http://example.com`, see that you're redirected to
@@ -123,7 +124,7 @@ responsibility to ensure that host security is adequate.**  I do not
 suggest that this is a production environment (at least as I'd
 describe one) but might be a good starting place towards building one.
 
-[^1]: I use DO to manage DNS for domains which are primarily deployed
+[1]: I use DO to manage DNS for domains which are primarily deployed
 there.  It works well, at least for mid-traffic applications.
 
 ## Author
