@@ -132,9 +132,6 @@ there.  It works well, at least for mid-traffic applications.
 
 Bunny Lushington
 
-All errors are mine and mine alone.  Please send suggestions for
-improvement or requests for clarification if required.
-
 ## License
 
 MIT License
