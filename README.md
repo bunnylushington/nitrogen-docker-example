@@ -115,14 +115,15 @@ fail if DNS is not configured (you need an A or CNAME record) or if
 the sample-compose.yml file was not edited correctly.
 
 After a minute or so, you should be able to browse to
-`http://example.com`, see that you're redirected to
+`http://example.com`, and see that you're redirected to
 `https://example.com` and your site.
 
-**Let me reiterate: this is a proof of concept!  Although DO droplets
-are usually configured with reasonable ipchains rules it is *your*
-responsibility to ensure that host security is adequate.**  I do not
-suggest that this is a production environment (at least as I'd
-describe one) but might be a good starting place towards building one.
+> **Let me reiterate: this is a proof of concept!  Although DO
+> droplets are usually configured with reasonable ipchains rules it is
+> *your* responsibility to ensure that host security is adequate.**  I
+> do not suggest that this is a production environment (at least as
+> I'd describe one) but might be a good starting place towards
+> building one.
 
 [1]: I use DO to manage DNS for domains which are primarily deployed
 there.  It works well, at least for mid-traffic applications.
