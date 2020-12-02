@@ -1,0 +1,45 @@
+version: '3.7'
+services:
+  traefik:
+    image: "traefik:v2.3"
+    container_name: "traefik"
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.email=quux@example.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - "/var/data/letsencrypt:/letsencrypt"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    networks:
+      - samplenet
+
+
+  fe:
+    image: bunnylushington/example-nitrogen-cowboy
+    volumes:
+      - "./site:/app/site"
+    networks:
+      - samplenet
+    tty: true
+    stdin_open: true
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.upfb-ins.rule=Host(`example.com`)"
+      - "traefik.http.routers.upfb-ins.entrypoints=web"
+      - "traefik.http.routers.upfb-ins.middlewares=redirect"
+      - "traefik.http.routers.upfb.rule=Host(`example.com`)"
+      - "traefik.http.routers.upfb.entrypoints=websecure"
+      - "traefik.http.routers.upfb.tls.certresolver=myresolver"
+      - "traefik.http.services.upfb.loadbalancer.server.port=8000"
+
+networks:
+  samplenet:
