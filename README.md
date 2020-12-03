@@ -10,6 +10,15 @@ anywhere near production ready except for the very simplest of
 applications, although it might serve as a basis for further
 exploration.
 
+## Gotchas
+
+Neither the app/etc nor app/lib directories are mounted locally
+meaning that changes made to configuration files and custom plugins
+will be ephemeral (i.e., when the container goes away, so will any
+changes made directly on the container). The correct answer to how to
+proceed is developer independent though I'm open to pull requests if
+you come up with something generally useful.
+
 ## The Quick Way
 
 The shell script `nitrodocker` wraps the commands noted in Getting
@@ -26,7 +35,6 @@ Create New Element | `./nitrodocker dev element <element_name>`
 Create New Action  | `./nitrodocker dev action <action_name>`
 Create New Plugin  | `./nitrodocker dev plugin <plugin_name>`
 Compile            | `./nitrodocker compile`
-
 
 
 ## Getting Going
