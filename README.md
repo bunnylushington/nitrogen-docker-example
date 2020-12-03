@@ -16,7 +16,7 @@ The shell script `nitrodocker` wraps the commands noted in Getting
 Going:
 
 Action | Comamnd
-______ | _______
+------ | -------
 Start              | `./nitrodocker start`
 Stop               | `./nitrodocker stop`
 Erlang Console     | `./nitrodocker Console`
