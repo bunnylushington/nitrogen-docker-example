@@ -1,0 +1,41 @@
+#!env bash
+
+BASE=$(dirname "$(realpath -s "$0")")
+SITE="$BASE/site"
+NAME=nitrogen
+IMAGE=bunnylushington/example-nitrogen-cowboy
+
+case $1 in
+    start)
+        if [ ! -e "$SITE" ]; then
+            docker run --rm --name $NAME -v "$BASE":/site $IMAGE \
+                   cp -r /app/site /site
+        fi
+        docker run -d --rm --name $NAME -p 127.0.0.1:8000:8000 \
+               -v "$SITE":/app/site $IMAGE
+        ;;
+
+    stop)
+        docker stop nitrogen
+        ;;
+
+    console)
+        docker exec -it -e TERM=xterm $NAME /app/bin/nitrogen remote_console
+        ;;
+
+    shell)
+        docker exec -it $NAME bash
+        ;;
+
+    dev)
+        docker exec -it $NAME /app/bin/dev "$2" "$3"
+        ;;
+
+    compile)
+        docker exec -it $NAME /app/bin/dev compile
+        ;;
+
+    *)
+        echo "start|stop|console|shell|dev|compile"
+        ;;
+esac

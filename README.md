@@ -10,6 +10,25 @@ anywhere near production ready except for the very simplest of
 applications, although it might serve as a basis for further
 exploration.
 
+## The Quick Way
+
+The shell script `nitrodocker` wraps the commands noted in Getting
+Going:
+
+Action | Comamnd
+______ | _______
+Start              | `./nitrodocker start`
+Stop               | `./nitrodocker stop`
+Erlang Console     | `./nitrodocker Console`
+Shell Prompt       | `./nitrodocker shell`
+Create New Page    | `./nitrodocker dev page <page_name>`
+Create New Element | `./nitrodocker dev element <element_name>`
+Create New Action  | `./nitrodocker dev action <action_name>`
+Create New Plugin  | `./nitrodocker dev plugin <plugin_name>`
+Compile            | `./nitrodocker compile`
+
+
+
 ## Getting Going
 
 ### Building the Container
