@@ -30,7 +30,7 @@ Action | Comamnd
 ------ | -------
 Start              | `./nitrodocker start`
 Stop               | `./nitrodocker stop`
-Erlang Console     | `./nitrodocker Console`
+Erlang Console     | `./nitrodocker console`
 Shell Prompt       | `./nitrodocker shell`
 Create New Page    | `./nitrodocker dev page <page_name>`
 Create New Element | `./nitrodocker dev element <element_name>`
