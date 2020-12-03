@@ -22,7 +22,9 @@ you come up with something generally useful.
 ## The Quick Way
 
 The shell script `nitrodocker` wraps the commands noted in Getting
-Going:
+Going.  Cloning this project and running `nitrodocker start` is really
+all you need to do.
+
 
 Action | Comamnd
 ------ | -------
